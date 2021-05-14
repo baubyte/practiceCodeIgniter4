@@ -1,0 +1,3 @@
+#!/bin/bash
+
+docker exec -it codeigniter-app bash -c "sudo -u devbaubyte /bin/bash"

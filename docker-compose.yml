@@ -1,0 +1,55 @@
+version: "3.7"
+services: 
+  db:
+    image: mysql:5.7
+    container_name: codeigniter-db
+    restart: unless-stopped
+    environment: 
+      MYSQL_ROOT_PASSWORD: admin.root
+    ports: 
+      - 3360:3306
+    volumes: 
+      - ./mysql-data/:/var/lib/mysql
+    networks:
+      - codeigniter
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: codeigniter-pma
+    restart: unless-stopped
+    ports:
+      - 8091:80
+    environment:
+      PMA_ARBITRARY: 0
+      PMA_HOST: codeigniter-db
+      PMA_PORT: 3306
+    networks:
+      - codeigniter
+    depends_on: 
+      - db
+  app:
+    build:
+      context: ./docker
+      dockerfile: Dockerfile
+      args:
+        uid: 1000
+    image: codeigniter-dev
+    container_name: codeigniter-app
+    restart: unless-stopped
+    ports: 
+      - 8090:80
+    environment:
+      - APACHE_RUN_USER=#1000
+      - APACHE_RUN_GROUP=#1000
+    volumes: 
+      - ./codeigniter-src/:/var/www
+      - ./codeigniter-src/public/:/var/www/html
+    networks:
+      - codeigniter
+    depends_on: 
+      - db
+networks:
+ codeigniter:
+    driver: bridge
+volumes: 
+  mysql-data:
+  codeigniter-src:
