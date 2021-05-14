@@ -1,4 +1,3 @@
-
 #!/bin/bash
 
 docker exec -it codeigniter-db bash -c "mysql -u root -padmin.root"
