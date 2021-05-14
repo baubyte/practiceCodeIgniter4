@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><?=$this->renderSection('title')?>&nbsp;-&nbsp;Mi Blog</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+    <!-- Render de CSS -->
+    <?=$this->renderSection('css')?>
+</head>
+<body>
+    <!-- Incluimos en Header -->
+    <?=$this->include('Front/layout/header')?>
+     <!-- Render de Contenido -->
+    <?=$this->renderSection('content')?>
+    <!-- Incluimos en Footer -->
+    <?=$this->include('Front/layout/footer')?>
+    <!-- Render de JS -->
+    <?=$this->renderSection('js')?>
+</body>
+</html>
