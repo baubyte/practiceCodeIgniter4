@@ -32,11 +32,15 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-/**Grupo de Rutas */
+
+/**Grupo de Rutas Front*/
 $routes->group('/',['namespace' => 'App\Controllers\Front'],function($routes){
 	$routes->get('', 'Home::index');
 });
-
+/**Grupo de Rutas Auth*/
+$routes->group('auth',['namespace' => 'App\Controllers\Auth'],function($routes){
+	$routes->get('register', 'Register::index');
+});
 /*
  * --------------------------------------------------------------------
  * Additional Routing
