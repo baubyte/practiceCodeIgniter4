@@ -10,11 +10,11 @@
 </head>
 <body>
     <!-- Incluimos en Header -->
-    <?=$this->include('Front/layout/header')?>
+    <?=$this->include('front/layout/header')?>
      <!-- Render de Contenido -->
     <?=$this->renderSection('content')?>
     <!-- Incluimos en Footer -->
-    <?=$this->include('Front/layout/footer')?>
+    <?=$this->include('front/layout/footer')?>
     <!-- Render de JS -->
     <?=$this->renderSection('js')?>
 </body>

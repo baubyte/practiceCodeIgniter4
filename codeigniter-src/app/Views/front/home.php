@@ -1,5 +1,5 @@
 <!-- Extendemos del Layout Principal -->
-<?=$this->extend('Front/layout/main')?>
+<?=$this->extend('front/layout/main')?>
 <!-- Seccion Titulo -->
 <?=$this->section('title') ?>
 Home
