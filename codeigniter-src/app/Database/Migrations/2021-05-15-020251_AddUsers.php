@@ -33,6 +33,11 @@ class AddUsers extends Migration
 				'unique' => true,
 				'null' => false
 			],
+			'password'       => [
+				'type'       => 'VARCHAR',
+				'constraint' => '60',
+				'null' => false
+			],
 			'created_at' => [
 				'type' => 'DATETIME',
 				'null' => false,
