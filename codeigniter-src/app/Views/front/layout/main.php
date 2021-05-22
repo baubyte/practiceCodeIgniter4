@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?=$this->renderSection('title')?>&nbsp;-&nbsp;Mi Blog</title>
     <link rel="stylesheet" href="<?=base_url('assets/bulma/css/bulma.css')?>">
+    <link rel="stylesheet" href="<?=base_url('assets/fontawesome/css/all.css')?>">
     <!-- Render de CSS -->
     <?=$this->renderSection('css')?>
 </head>

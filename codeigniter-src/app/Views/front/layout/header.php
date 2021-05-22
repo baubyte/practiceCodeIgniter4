@@ -17,7 +17,7 @@
                     <li class="<?=service('request')->uri->getPath() == 'auth/registro' ? 'is-active':'' ;?>">
                         <a href="<?=base_url(route_to('register'))?>">Registro 🔏 </a>
                     </li>
-                    <li class="<?=service('request')->uri->getPath() == 'auth/ingreso' ? 'is-active':'' ;?>">
+                    <li class="<?=service('request')->uri->getPath() == 'auth/ingresar' ? 'is-active':'' ;?>">
                         <a href="<?=base_url(route_to('login'))?>">Ingreso 🔑 </a>
                     </li>
                 </ul>
