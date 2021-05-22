@@ -104,7 +104,7 @@ class Register extends BaseController
             ],
             'password' => [
                 'label'  => 'Contraseña',
-                'rules'  => 'required|matches[password_confirm]|min_length[6]|regex_match[/[A-Za-z]+[0-9]/]',
+                'rules'  => 'required|matches[password_confirm]|min_length[6]|regex_match[/[A-Za-z0-9]/]',
                 'errors' => [
                     'required' => 'La {field} es Obligatoria.',
                     'min_length' => 'La {field} debe tener al menos 6 Caracteres.',
