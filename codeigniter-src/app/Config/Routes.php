@@ -43,6 +43,7 @@ $routes->group('auth',['namespace' => 'App\Controllers\Auth'],function($routes){
 	$routes->get('ingresar', 'Login::index', ['as' => 'login']);
 
 	$routes->post('registrarme', 'Register::store', ['as' => 'store']);
+	$routes->post('ingresando', 'Login::signin', ['as' => 'signin']);
 });
 /*
  * --------------------------------------------------------------------
