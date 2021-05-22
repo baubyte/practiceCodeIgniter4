@@ -4,11 +4,9 @@
 <?= $this->section('title') ?>
 Registro
 <?= $this->endSection() ?>
-<?= $this->section('css')?>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-<?= $this->endSection() ?>
 <!-- Seccion Contenido -->
 <?= $this->section('content') ?>
+<section class="section">
 <div class="container">
   <section class="section">
     <h1 class="title">¡Registrate Ahora! 🦸</h1>
@@ -75,4 +73,5 @@ Registro
   </div>
   </form>
 </div>
+</section>
 <?= $this->endSection() ?>
