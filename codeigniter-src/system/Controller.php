@@ -34,7 +34,7 @@ class Controller
 	/**
 	 * Instance of the main Request object.
 	 *
-	 * @var RequestInterface
+	 * @var HTTP\IncomingRequest
 	 */
 	protected $request;
 
