@@ -35,11 +35,14 @@ $routes->setAutoRoute(true);
 
 /**Grupo de Rutas Front*/
 $routes->group('/',['namespace' => 'App\Controllers\Front'],function($routes){
-	$routes->get('', 'Home::index');
+	$routes->get('', 'Home::index', ['as' => 'home']);
 });
 /**Grupo de Rutas Auth*/
 $routes->group('auth',['namespace' => 'App\Controllers\Auth'],function($routes){
-	$routes->get('register', 'Register::index');
+	$routes->get('registro', 'Register::index', ['as' => 'register']);
+	$routes->get('ingresar', 'Login::index', ['as' => 'login']);
+
+	$routes->post('registrarme', 'Register::store', ['as' => 'store']);
 });
 /*
  * --------------------------------------------------------------------
