@@ -108,7 +108,7 @@ class App extends BaseConfig
 	 *
 	 * @var string
 	 */
-	public $appTimezone = 'America/Chicago';
+	public $appTimezone = 'America/Argentina/Buenos_Aires';
 
 	/**
 	 * --------------------------------------------------------------------------
@@ -162,7 +162,7 @@ class App extends BaseConfig
 	 *
 	 * @var string
 	 */
-	public $sessionCookieName = 'ci_session';
+	public $sessionCookieName = 'baubyte_session';
 
 	/**
 	 * --------------------------------------------------------------------------
@@ -338,7 +338,7 @@ class App extends BaseConfig
 	 *
 	 * @var string
 	 */
-	public $CSRFTokenName = 'csrf_test_name';
+	public $CSRFTokenName = 'csrf_token_baubyte';
 
 	/**
 	 * --------------------------------------------------------------------------
@@ -364,7 +364,7 @@ class App extends BaseConfig
 	 *
 	 * @var string
 	 */
-	public $CSRFCookieName = 'csrf_cookie_name';
+	public $CSRFCookieName = 'csrf_cookie_baubyte';
 
 	/**
 	 * --------------------------------------------------------------------------
