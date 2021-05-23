@@ -13,7 +13,7 @@ class UserInfoModel extends Model
 	protected $useAutoIncrement     = true;
 	protected $insertID             = 0;
 	protected $returnType           = UserInfo::class;
-	protected $useSoftDelete        = true;
+	protected $useSoftDeletes        = true;
 	protected $protectFields        = true;
 	protected $allowedFields        = ['user_id','country_id', 'name', 'surname', ];
 
