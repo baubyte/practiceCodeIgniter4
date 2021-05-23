@@ -12,14 +12,14 @@ Ingreso
             <h1 class="title">¡Iniciar Sesión! 🦸</h1>
             <h2 class="subtitle">Ingresar al Blog.</h2>
         </section>
-        <? if(!empty(session('msg'))):?>
-        <article class="message is-success">
+        <?php if(!empty(session('msg'))):?>
+        <article class="message is-<?=session('msg.type')?>">
             <div class="message-header">
-                <p>¡Éxito!</p>
+                <p><?=session('msg.header')?></p>
                 <button class="delete" aria-label="delete"></button>
             </div>
             <div class="message-body">
-               <?=session('msg')?>
+               <?=session('msg.body')?>
             </div>
         </article>
         <? endif;?>
