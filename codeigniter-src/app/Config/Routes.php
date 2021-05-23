@@ -54,7 +54,7 @@ $routes->group('admin',['namespace' => 'App\Controllers\Admin', 'filter' => 'aut
 	//Posts
 	$routes->get('articulos', 'Post::index', ['as' => 'posts']);
 	$routes->get('articulo/crear', 'Post::create', ['as' => 'post_create']);
-	$routes->get('articulo/guardar', 'Post::store', ['as' => 'post_store']);
+	$routes->post('articulo/guardar', 'Post::store', ['as' => 'post_store']);
 	
 	//Categorias
 	$routes->get('categorias', 'Category::index', ['as' => 'categories']);
