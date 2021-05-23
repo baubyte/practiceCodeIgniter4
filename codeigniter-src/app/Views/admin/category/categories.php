@@ -2,7 +2,7 @@
 <?= $this->extend('admin/layout/main') ?>
 <!-- Seccion Titulo -->
 <?= $this->section('title') ?>
-Lista de Categorias
+Lista de Categorías
 <?= $this->endSection() ?>
 <!-- Seccion Contenido -->
 <?= $this->section('content') ?>
