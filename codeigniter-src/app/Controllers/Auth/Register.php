@@ -50,7 +50,11 @@ class Register extends BaseController
             $userModel->addUserInfo($userInfo);
             /**Insertamos el Usuario */
             $userModel->insert($user);
-            return redirect()->route('login')->with('msg', 'Te Registraste Correctamente.');
+            return redirect()->route('login')->with('msg', [
+                'type' => 'success',
+                'header' => '¡Éxito! 😬',
+                'body'=> 'Te Registraste Correctamente.'
+                ]);
         } else {
             return redirect()->back()->withInput()->with('errors', $this->validationUser());
         }
