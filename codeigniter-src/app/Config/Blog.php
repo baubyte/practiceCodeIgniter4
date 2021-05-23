@@ -18,6 +18,6 @@ class Blog extends BaseConfig
 	 *
 	 * @var integer
 	 */
-	public $regPerPage = 1;
+	public $regPerPage = 2;
 
 }
