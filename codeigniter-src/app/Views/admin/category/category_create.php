@@ -20,6 +20,5 @@ Alta de Categoria
             <input class="button is-dark" type="submit" value="Guardar">
         </div>
     </div>
-    </div>
 </form>
 <?= $this->endSection() ?>
