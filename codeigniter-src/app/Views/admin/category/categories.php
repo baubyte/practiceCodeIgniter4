@@ -50,7 +50,7 @@ Lista de Categorias
                     </td>
                     <td>
                         <a class="button is-success is-small" href="<?= $category->getRouteEdit() ?>">Editar</a>
-                        <a class="button is-danger is-small" href="<?= $category->getRouteEdit() ?>">Eliminar</a>
+                        <a class="button is-danger is-small" href="<?= $category->getRouteDelete() ?>">Eliminar</a>
                     </td>
                 </tr>
             <?php endforeach; ?>

@@ -5,6 +5,8 @@ namespace App\Controllers\Admin;
 use App\Controllers\BaseController;
 use App\Entities\Category as EntitiesCategory;
 use CodeIgniter\Exceptions\PageNotFoundException;
+//Librería pra hashear los ids
+use Hashids\Hashids;
 
 class Category extends BaseController
 {
@@ -61,13 +63,22 @@ class Category extends BaseController
 			])->with('errors', $this->validateCategoryStore());
 		}
 	}
-	public function edit(int $id)
+	/**
+	 * Busca la categoria por le id
+	 * y los pinta en la vista
+	 *
+	 * @param string $id
+	 * @return view
+	 */
+	public function edit(string $id)
 	{
+		//Recibimos y lo decodificamos
+		$id = $this->getDecodeId($id);
+		//dd($id);
 		//Llamamos al Modelo
 		$categoryModel = model('CategoryModel');
 		//Buscamos la categoria por el id
 		$category = $categoryModel->find($id);
-
 		if ($category == false) {
 			//si no la encuentra desencadenamos un exenció
 			throw PageNotFoundException::forPageNotFound();
@@ -75,6 +86,12 @@ class Category extends BaseController
 			return view('admin/category/category_edit', ['category' => $category]);
 		}
 	}
+	/**
+	 * Realiza la actualización de los datos
+	 * modificados de la categoria
+	 *
+	 * @return void
+	 */
 	public function update()
 	{
 		if ($this->validateCategoryUpdate() === true) {
@@ -96,6 +113,20 @@ class Category extends BaseController
 				'body' => 'Surgieron Errores.'
 			])->with('errors', $this->validateCategoryUpdate());
 		}
+	}
+	public function delete(string $id)
+	{
+		//Recibimos y lo decodificamos
+		$id = $this->getDecodeId($id);
+		/**Lamamos al Modelo */
+		$categoryModel = model('CategoryModel');
+		/**Eliminamos la Categoria */
+		$categoryModel->delete($id);
+		return redirect()->route('categories')->with('msg', [
+			'type' => 'success',
+			'header' => '¡Éxito! 😬',
+			'body' => 'La Categoria se Elimino Correctamente.'
+		]);
 	}
 	/**
 	 * Se encarga de validar el campo de Categoría
@@ -162,5 +193,18 @@ class Category extends BaseController
 			return $validation->getErrors();
 		}
 		return true;
+	}
+	/**
+	 * Se encarga de decodificar el id que recibimos
+	 *
+	 * @param string $id
+	 * @return idDecode
+	 */
+	public function getDecodeId(string $id)
+	{
+		//Instaríamos el hashid
+		$hashId = new Hashids();
+		$idDecode =$hashId->decode($id);
+		return  array_shift($idDecode);
 	}
 }
