@@ -51,8 +51,11 @@ $routes->group('auth',['namespace' => 'App\Controllers\Auth'],function($routes){
  * también le pasamos parámetros para ver que roles pueden ingresar
 */
 $routes->group('admin',['namespace' => 'App\Controllers\Admin', 'filter' => 'auth:Admin'],function($routes){
+	//Posts
 	$routes->get('articulos', 'Post::index', ['as' => 'posts']);
-
+	$routes->get('articulo/crear', 'Post::create', ['as' => 'post_create']);
+	$routes->get('articulo/guardar', 'Post::store', ['as' => 'post_store']);
+	
 	//Categorias
 	$routes->get('categorias', 'Category::index', ['as' => 'categories']);
 
