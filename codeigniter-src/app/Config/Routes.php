@@ -46,8 +46,11 @@ $routes->group('auth',['namespace' => 'App\Controllers\Auth'],function($routes){
 	$routes->post('registrarme', 'Register::store', ['as' => 'store']);
 	$routes->post('ingresando', 'Login::signin', ['as' => 'signin']);
 });
-/**Grupo de Rutas Administrador*/
-$routes->group('admin',['namespace' => 'App\Controllers\Admin'],function($routes){
+/**Grupo de Rutas Administrador 
+ * usamos un filtro para validar si el usuario inicio sesión
+ * también le pasamos parámetros para ver que roles pueden ingresar
+*/
+$routes->group('admin',['namespace' => 'App\Controllers\Admin', 'filter' => 'auth:Admin'],function($routes){
 	$routes->get('articulos', 'Post::index', ['as' => 'posts']);
 });
 /*
