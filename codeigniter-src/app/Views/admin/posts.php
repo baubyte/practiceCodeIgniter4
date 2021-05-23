@@ -6,5 +6,7 @@ Lista de Artículos
 <?= $this->endSection() ?>
 <!-- Seccion Contenido -->
 <?= $this->section('content') ?>
-<h1>Lista de Articulos</h1>
+<div class="field">
+    <a class="button is-dark" href="<?= base_url(route_to('post_create')) ?>">Agregar Nuevo Articulo</a>
+</div>
 <?= $this->endSection() ?>
