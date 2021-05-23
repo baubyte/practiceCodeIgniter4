@@ -76,8 +76,27 @@ class UserModel extends Model
 		}
 	}
 
+	/**
+	 * Asigana la información del usuario a la propiedad
+	 *
+	 * @param UserInfo $userInfo
+	 * @return void
+	 */
 	public function addUserInfo(UserInfo $userInfo)
 	{
 		$this->userInfo = $userInfo;
+	}
+
+	/**
+	 * Obtiene un usuario y lo busca por la columna y valor que se 
+	 * le pase 
+	 *
+	 * @param string $column
+	 * @param string $value
+	 * @return Entity User
+	 */
+	public function getUserBy(string $column, string $value)
+	{
+		return $this->where($column, $value)->first();
 	}
 }
