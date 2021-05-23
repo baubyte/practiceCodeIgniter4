@@ -52,7 +52,7 @@ class Auth implements FilterInterface
                 ]);
 		} else {
 			//Verificamos si posee el permiso
-			if(in_array($user->getRole()->name, $arguments) === false){
+			if(in_array($user->getGroup()->name, $arguments) === false){
 				//Mostramos un 404
 				throw PageNotFoundException::forPageNotFound();
 			}

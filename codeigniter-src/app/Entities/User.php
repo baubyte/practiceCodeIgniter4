@@ -41,12 +41,12 @@ class User extends Entity
     }
 
     /**
-     * Obtiene el rol del usuario es decir a que grupo
+     * Obtiene el grupo del usuario es decir el rol a que
      * pertenece
      *
-     * @return void
+     * @return Group
      */
-    public function getRole()
+    public function getGroup()
     {
         //Llamamos al modelo de grupos
         $modelGroup = model('GroupModel');
