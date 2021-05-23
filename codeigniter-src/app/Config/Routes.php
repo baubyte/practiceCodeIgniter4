@@ -41,9 +41,14 @@ $routes->group('/',['namespace' => 'App\Controllers\Front'],function($routes){
 $routes->group('auth',['namespace' => 'App\Controllers\Auth'],function($routes){
 	$routes->get('registro', 'Register::index', ['as' => 'register']);
 	$routes->get('ingresar', 'Login::index', ['as' => 'login']);
+	$routes->get('salir', 'Login::signout', ['as' => 'signout']);
 
 	$routes->post('registrarme', 'Register::store', ['as' => 'store']);
 	$routes->post('ingresando', 'Login::signin', ['as' => 'signin']);
+});
+/**Grupo de Rutas Administrador*/
+$routes->group('admin',['namespace' => 'App\Controllers\Admin'],function($routes){
+	$routes->get('articulos', 'Post::index', ['as' => 'posts']);
 });
 /*
  * --------------------------------------------------------------------
