@@ -37,7 +37,7 @@
         <nav class="tabs is-boxed is-fullwidth">
             <div class="container">
                 <ul>
-                    <li class="<?= service('request')->uri->getPath() == 'admin/articulos' ? 'is-active' : ''; ?>">
+                    <li class="<?= preg_match('|^admin/articulo(\S)*$|',service('request')->uri->getPath(), $matches) ? 'is-active' : ''; ?>">
                         <a href="<?= base_url(route_to('posts')) ?>">Artículos 📑</a>
                     </li>
                     <li class="<?= preg_match('|^admin/categoria(\S)*$|',service('request')->uri->getPath(), $matches) ? 'is-active' : ''; ?>">
