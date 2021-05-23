@@ -40,4 +40,19 @@ class User extends Entity
         return $this->attributes['password'];
     }
 
+    /**
+     * Obtiene el rol del usuario es decir a que grupo
+     * pertenece
+     *
+     * @return void
+     */
+    public function getRole()
+    {
+        //Llamamos al modelo de grupos
+        $modelGroup = model('GroupModel');
+        //Buscamos el Grupo
+        return $modelGroup->where('id', $this->group_id)->first();
+
+    }
+
 }
