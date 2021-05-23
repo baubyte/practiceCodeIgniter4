@@ -40,8 +40,8 @@
                     <li class="<?= service('request')->uri->getPath() == 'admin/articulos' ? 'is-active' : ''; ?>">
                         <a href="<?= base_url(route_to('posts')) ?>">Artículos 📑</a>
                     </li>
-                    <li class="<?= service('request')->uri->getPath() == 'auth/registro' ? 'is-active' : ''; ?>">
-                        <a href="<?= base_url(route_to('home')) ?>">Categorías 🌟 </a>
+                    <li class="<?= preg_match('|^admin/categoria(\S)*$|',service('request')->uri->getPath(), $matches) ? 'is-active' : ''; ?>">
+                        <a href="<?= base_url(route_to('categories')) ?>">Categorías 🌟 </a>
                     </li>
                     <li class="<?= service('request')->uri->getPath() == 'auth/registro' ? 'is-active' : ''; ?>">
                         <a href="<?= base_url(route_to('home')) ?>">Usuarios 😋 </a>
