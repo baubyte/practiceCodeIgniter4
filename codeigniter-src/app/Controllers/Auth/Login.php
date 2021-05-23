@@ -3,14 +3,25 @@
 namespace App\Controllers\Auth;
 
 use App\Controllers\BaseController;
+use CodeIgniter\HTTP\Request;
 
 class Login extends BaseController
 {
+
 	public function index()
 	{
-		return view('auth/login');
+		if (!session()->is_logged) {
+			return view('auth/login');
+		}
+		return redirect()->route('posts');
 	}
 
+	/**
+	 * Método que se encarga de validar las credenciales para poder
+	 * iniciar sesión
+	 *
+	 * @return redirect
+	 */
 	public function signin()
 	{
 
