@@ -142,7 +142,7 @@ class Category extends BaseController
 		$validation->setRules([
 			'name' => [
 				'label'  => 'Nombre',
-				'rules'  => 'required|alpha_numeric_punct|min_length[3]|max_length[120]',
+				'rules'  => 'required|alpha_numeric_punct|min_length[1]|max_length[120]',
 				'errors' => [
 					'required' => 'El {field} es Obligatorio.',
 					'alpha_numeric_punct' => 'Solo se permiten letras y Signos de Puntuación.',
@@ -171,7 +171,7 @@ class Category extends BaseController
 		$validation->setRules([
 			'name' => [
 				'label'  => 'Nombre',
-				'rules'  => 'required|alpha_numeric_punct|min_length[3]|max_length[120]',
+				'rules'  => 'required|alpha_numeric_punct|min_length[1]|max_length[120]',
 				'errors' => [
 					'required' => 'El {field} es Obligatorio.',
 					'alpha_numeric_punct' => 'Solo se permiten letras y Signos de Puntuación.',
