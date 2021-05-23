@@ -78,9 +78,9 @@ class Category extends BaseController
 		//Llamamos al Modelo
 		$categoryModel = model('CategoryModel');
 		//Buscamos la categoria por el id
-		$category = $categoryModel->find($id);
+		$category = $categoryModel->where('id',$id)->first();
 		if ($category == false) {
-			//si no la encuentra desencadenamos un exenció
+			//si no la encuentra desencadenamos un excepción
 			throw PageNotFoundException::forPageNotFound();
 		} else {
 			return view('admin/category/category_edit', ['category' => $category]);
@@ -117,16 +117,21 @@ class Category extends BaseController
 	public function delete(string $id)
 	{
 		//Recibimos y lo decodificamos
-		$id = $this->getDecodeId($id);
-		/**Lamamos al Modelo */
-		$categoryModel = model('CategoryModel');
-		/**Eliminamos la Categoria */
-		$categoryModel->delete($id);
-		return redirect()->route('categories')->with('msg', [
-			'type' => 'success',
-			'header' => '¡Éxito! 😬',
-			'body' => 'La Categoria se Elimino Correctamente.'
-		]);
+		$id = $this->getDecodeId($id);;
+		if (is_null($id)) {
+			//si no la encuentra desencadenamos un excepción
+			throw PageNotFoundException::forPageNotFound();
+		} else {
+			/**Lamamos al Modelo */
+			$categoryModel = model('CategoryModel');
+			/**Eliminamos la Categoria */
+			$categoryModel->delete($id);
+			return redirect()->route('categories')->with('msg', [
+				'type' => 'success',
+				'header' => '¡Éxito! 😬',
+				'body' => 'La Categoria se Elimino Correctamente.'
+			]);
+		}
 	}
 	/**
 	 * Se encarga de validar el campo de Categoría
