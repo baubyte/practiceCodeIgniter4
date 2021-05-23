@@ -3,6 +3,7 @@
 namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
+use App\Entities\Category as EntitiesCategory;
 
 class Category extends BaseController
 {
@@ -34,7 +35,17 @@ class Category extends BaseController
 	public function store()
 	{
 		if ($this->validateCategory() === true) {
-			dd($this->request->getPost());
+			/**Entidad Categoria asignamos las propiedades*/
+			$category = new EntitiesCategory($this->request->getPost());
+			/**Lamamos al Modelo */
+			$categoryModel = model('CategoryModel');
+			/**Insertamos la Categoria */
+			$categoryModel->insert($category);
+			return redirect()->route('categories')->with('msg', [
+                'type' => 'success',
+                'header' => '¡Éxito! 😬',
+                'body'=> 'La Categoria se Guardo Correctamente.'
+                ]);
 		} else {
 			return redirect()->back()->withInput()->with('msg', [
 				'type' => 'danger',
