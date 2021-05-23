@@ -14,6 +14,7 @@ class AddPosts extends Migration
 				'constraint'     => 12,
 				'unsigned'       => true,
 				'auto_increment' => true,
+
 			],
 			'user_id'          => [
 				'type'           => 'INT',
@@ -29,7 +30,7 @@ class AddPosts extends Migration
 			'slug'       => [
 				'type'       => 'VARCHAR',
 				'constraint' => '150',
-				'unique' => false,
+				'unique' => true,
 				'null' => false
 			],
 			'body'       => [
@@ -40,6 +41,10 @@ class AddPosts extends Migration
 				'type'       => 'VARCHAR',
 				'constraint' => '40',
 				'null' => true
+			],
+			'published_at' => [
+				'type' => 'DATETIME',
+				'null' => false,
 			],
 			'created_at' => [
 				'type' => 'DATETIME',
@@ -55,7 +60,7 @@ class AddPosts extends Migration
 			],
 		]);
 		$this->forge->addKey('id', true);
-		$this->forge->addForeignKey('user_id','users','id','CASCADE');
+		$this->forge->addForeignKey('user_id','users','id','CASCADE','SET NULL');
 		$this->forge->createTable('posts');
 	}
 
