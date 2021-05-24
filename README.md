@@ -1,2 +1,8 @@
-# practiceCodeIgniter4
-Partica con CodeIgniter 4
+# Practica con CodeIgniter 4
+
+#### Armando un Simple y Pequeño Blog
+
+### Usuario
+    admin@admin.com
+### Contraseña
+    Martin123
