@@ -6,7 +6,7 @@ Crear un Articulo
 <?= $this->endSection() ?>
 <!-- Seccion Contenido -->
 <?= $this->section('content') ?>
-<form action="<?= base_url(route_to('category_store')) ?>" method="post" enctype="multipart/form-data">
+<form action="<?= base_url(route_to('post_store')) ?>" method="post" enctype="multipart/form-data">
     <?= csrf_field() ?>
     <div class="columns">
         <div class="column is-four-fifths">
@@ -88,16 +88,14 @@ Crear un Articulo
         height: 500,
         menubar: false,
         language: 'es',
+        spellchecker_language: 'es',
         plugins: [
-            'advlist autolink list link image charmap print preview anchor',
+            'advlist autolink lists link image charmap print preview anchor',
             'searchreplace visualblocks code fullscreen',
             'insertdatetime media table paste code help wordcount code',
             'tinymcespellchecker'
         ],
-        toolbar: 'undo redo | formatselect | '+
-                'bold italic backcolor | alignleft aligncenter'+
-                'alignright alignjustify | bullist numlist outdent indent | '+
-                'removeformat | help | code',
+        toolbar: 'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help | code',
         toolbar_mode: 'floating',
         content_style: 'body {font-family: Helvetica, Arial, sans-serif; font-size:14px}'
     });
