@@ -39,7 +39,7 @@ class Auth implements FilterInterface
 		//Llamamos al modelo de usuario
 		$userModel = model('UserModel');
 		//Buscamos al usuario
-		$user = $userModel->getUserBy('id', session()->id);
+		$user = $userModel->getUserBy('id', session()->user);
 		//Verificamos si existe
 		if ($user === false) {
 			//destruimos la sesión
