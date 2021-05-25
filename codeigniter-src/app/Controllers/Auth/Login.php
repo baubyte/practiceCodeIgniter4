@@ -44,7 +44,7 @@ class Login extends BaseController
 			} else {
 				//Array con los datos del Usuario
 				$datosUsuario = [
-					'id'  => $user->id,
+					'user'  => $user->id,
 					'username'  => $user->username,
 					'email'     => $user->email,
 					'is_logged' => true
