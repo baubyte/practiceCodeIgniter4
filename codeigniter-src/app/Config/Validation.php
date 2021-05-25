@@ -40,4 +40,52 @@ class Validation
 	//--------------------------------------------------------------------
 	// Rules
 	//--------------------------------------------------------------------
+
+		/**
+		 * Reglas de Validación para los POST / Artículos 
+		 *
+		 * @var array
+		 */
+			public $postStore = [
+				'title' => [
+					'label'  => 'Titulo',
+					'rules'  => 'required|alpha_numeric_punct|min_length[1]',
+					'errors' => [
+						'required' => 'El {field} es Obligatorio.',
+						'alpha_numeric_punct' => 'Solo se permiten letras.',
+						'min_length' => 'El {field} debe ser mayor a 3 Caracteres.',
+					]
+				],
+				'body' => [
+					'label'  => 'Cuerpo',
+					'rules'  => 'required|min_length[3]',
+					'errors' => [
+						'required' => 'El {field} es Obligatorio.',
+						'min_length' => 'El {field} debe ser mayor a 3 Caracteres.',
+					]
+				],
+				'published_at' => [
+					'label'  => 'Fecha de Publicación',
+					'rules'  => 'required|valid_date',
+					'errors' => [
+						'required' => 'El {field} es Obligatorio.',
+						'valid_date' => 'Debe Ingresar un {field} Valida.',
+					]
+				],
+				'categories.*' => [
+					'label'  => 'Categoria',
+					'rules'  => 'permit_empty|is_not_unique[categories.id]',
+					'errors' => [
+						'is_not_unique' => 'El {field} no se Encuentra Registrada.',
+					]
+				],
+				'image' => [
+					'label'  => 'Imagen',
+					'rules'  => 'uploaded[image]|is_image[image]',
+					'errors' => [
+						'uploaded' => 'La {field} es Obligatoria.',
+						'is_image' => 'La {field} no es un tipo Valido.',
+					]
+				],
+			];
 }
