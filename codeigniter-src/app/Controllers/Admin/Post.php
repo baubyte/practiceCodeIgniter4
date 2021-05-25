@@ -45,12 +45,18 @@ class Post extends BaseController
 		//Seteamos el slug
 		$post->slug = $this->request->getVar('title');
 		//Seteamos el usuario
-		$post->user_id = session()->user_id;
-		//Subimos el Archivo
+		$post->user_id = session()->user;
+		//Capturamos el Archivo el Archivo
+		$file = $this->request->getFile('image');
+		//Generamos un nombre al azar y asignamos
+		$post->image = $file->getRandomName();
+		//Guardamos el archivo
+		$path = $file->store('images/',$post->image);
 
+		dd($post);
 		/**Lamamos al Modelo */
 		$postModel = model('PostModel');
 		/**Insertamos el Post */
-		$postModel->save($post);
+		$postModel->insert($post);
 	}
 }
