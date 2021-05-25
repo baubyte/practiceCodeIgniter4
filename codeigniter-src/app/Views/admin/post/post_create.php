@@ -20,7 +20,7 @@ Crear un Articulo
             <div class="field">
                 <label class="label">Cuerpo</label>
                 <div class="control">
-                    <textarea id="body" name="body" class="textarea" type="text" placeholder="Cuerpo" value="<?= old('body') ?>"></textarea>
+                    <textarea id="body" name="body" class="textarea" type="text" placeholder="Cuerpo"><?= old('body') ?></textarea>
                 </div>
                 <p class="help is-danger"><?= session('errors.body') ?></p>
             </div>
@@ -60,13 +60,24 @@ Crear un Articulo
                 <?php else : ?>
                     <div class="field">
                         <?php foreach ($categories as $category) : ?>
-                            <label class="checkbox" name="categories[]" value="<?= $category->id ?>">
-                                <input type="checkbox">
+                            <label class="checkbox">
+                                <input type="checkbox" name="categories[]" value="<?= $category->id?>"
+                                    <?= 
+                                        //Si no esta vacio
+                                        old('categories.*')
+                                            ?
+                                                //si el valor se encuentra en el array
+                                                (in_array($category->id, old('categories.*')) 
+                                                    ? 'checked' 
+                                                    : '')
+                                            : ''
+                                    ?>
+                                >
                                 <?= $category->name ?>
                             </label>
                         <?php endforeach; ?>
                     </div>
-                    <p class="help is-danger"><?= session('errors.categories') ?></p>
+                    <p class="help is-danger"><?= session('errors')['categories.*'] ?? '' ?></p>
                 <?php endif; ?>
             </div>
         </div>
