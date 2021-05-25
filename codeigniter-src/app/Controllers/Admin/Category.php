@@ -79,7 +79,7 @@ class Category extends BaseController
 		$categoryModel = model('CategoryModel');
 		//Buscamos la categoria por el id
 		$category = $categoryModel->where('id',$id)->first();
-		if ($category == false) {
+		if ($category == null) {
 			//si no la encuentra desencadenamos un excepción
 			throw PageNotFoundException::forPageNotFound();
 		} else {
