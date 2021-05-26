@@ -40,23 +40,28 @@ class Post extends BaseController
 		if ($this->validate('postStore') === false) {
 			return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
 		}
+		//Capturamos el Archivo el Archivo
+		$file = $this->request->getFile('image');
 		/**Entidad Post asignamos las propiedades*/
 		$post = new PostEntity($this->request->getPost());
 		//Seteamos el slug
 		$post->slug = $this->request->getVar('title');
 		//Seteamos el usuario
 		$post->user_id = session()->user;
-		//Capturamos el Archivo el Archivo
-		$file = $this->request->getFile('image');
 		//Generamos un nombre al azar y asignamos
 		$post->image = $file->getRandomName();
-		//Guardamos el archivo
-		$path = $file->store('images/',$post->image);
-
-		dd($post);
 		/**Lamamos al Modelo */
 		$postModel = model('PostModel');
+		/**Asignamos las categorías al post */
+		$postModel->assignCategories($this->request->getPost('categories'));
 		/**Insertamos el Post */
 		$postModel->insert($post);
+		//Guardamos el archivo
+		$path = $file->store('images/',$post->image);
+		return redirect()->route('posts')->with('msg', [
+			'type' => 'success',
+			'header' => '¡Éxito! 😬',
+			'body' => 'El Articulo se Agrego Correctamente.'
+		]);
 	}
 }
