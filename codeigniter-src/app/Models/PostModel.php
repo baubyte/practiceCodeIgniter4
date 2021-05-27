@@ -66,5 +66,19 @@ class PostModel extends Model
 	{
 		$this->categories = $categories;
 	}
+
+
+	/**
+	 * Realiza un filtro para los articulos
+	 *
+	 * @return Post
+	 */
+	public function published()
+	{
+		//Filtramos
+		$this->where('published_at <=',date('Y-m-d H:i:s'));
+		//Encadenados
+		return $this;
+	}
 }
 
