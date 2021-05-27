@@ -6,3 +6,6 @@
     admin@admin.com
 ### Contraseña
     Martin123
+
+### Crear enlace simbólico
+    /var/www/writable/uploads/images/ /var/www/html/uploads/images
