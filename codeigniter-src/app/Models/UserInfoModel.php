@@ -40,4 +40,5 @@ class UserInfoModel extends Model
 	protected $afterFind            = [];
 	protected $beforeDelete         = [];
 	protected $afterDelete          = [];*/
+
 }
