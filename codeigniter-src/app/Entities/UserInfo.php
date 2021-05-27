@@ -13,4 +13,14 @@ class UserInfo extends Entity
 		'updated_at',
 		'deleted_at',
 	];
+
+	/**
+	 * Mutator para obtener el nombre completo
+	 *
+	 * @return void
+	 */
+	public function getFullName()
+	{
+		return $this->name . ' ' . $this->surname;
+	}
 }
