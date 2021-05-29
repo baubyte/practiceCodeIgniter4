@@ -2,7 +2,7 @@
 <?= $this->extend('admin/layout/main') ?>
 <!-- Seccion Titulo -->
 <?= $this->section('title') ?>
-Crear un Articulo
+Editar Articulo - <?=$post->title?>
 <?= $this->endSection() ?>
 <!-- Seccion Contenido -->
 <?= $this->section('content') ?>
@@ -13,69 +13,53 @@ Crear un Articulo
             <div class="field">
                 <label class="label">Titulo</label>
                 <div class="control">
-                    <input name="title" class="input" type="text" placeholder="Titulo" value="<?= old('title') ?>">
+                    <input name="title" class="input" type="text" placeholder="Titulo" value="<?= old('title') ?? $post->title ?>">
                 </div>
                 <p class="help is-danger"><?= session('errors.title') ?></p>
             </div>
             <div class="field">
                 <label class="label">Cuerpo</label>
                 <div class="control">
-                    <textarea id="body" name="body" class="textarea" type="text" placeholder="Cuerpo"><?= old('body') ?></textarea>
+                    <textarea id="body" name="body" class="textarea" type="text" placeholder="Cuerpo"><?= old('body') ?? $post->body ?></textarea>
                 </div>
                 <p class="help is-danger"><?= session('errors.body') ?></p>
             </div>
         </div>
         <div class="column">
-            <div class="field">
-                <div class="file has-name is-boxed">
-                    <label class="file-label">
-                        <input class="file-input" type="file" name="image">
-                        <span class="file-cta">
-                            <span class="file-icon">
-                                <i class="fas fa-upload"></i>
-                            </span>
-                            <span class="file-label">
-                                Elige tu Imagen
-                            </span>
-                        </span>
-                    </label>
-                </div>
-                <p class="help is-danger"><?= session('errors.image') ?></p>
-            </div>
 
             <div class="field">
                 <label class="label">Fecha de Publicación</label>
                 <div class="control">
-                    <input name="published_at" class="input" type="date" placeholder="Fecha de Publicación" value="<?= old('published_at') ?>">
+                    <input name="published_at" class="input" type="date" placeholder="Fecha de Publicación" value="<?= old('published_at') ?? $post->published_at->toDateString() ?>">
                 </div>
                 <p class="help is-danger"><?= session('errors.published_at') ?></p>
             </div>
             <div class="field">
                 <label class="label">Categorías</label>
-                <?php if (empty($categories)) : ?>
-                    <a class="button is-dark" href="<?= base_url(route_to('category_create')) ?>">Agregar Nueva Categoria</a>
-                <?php else : ?>
                     <div class="field">
                         <?php foreach ($categories as $category) : ?>
                             <label class="checkbox">
                                 <input type="checkbox" name="categories[]" value="<?= $category->id?>"
-                                    <?= 
+                                    <?php
                                         //Si no esta vacio
-                                        old('categories.*')
-                                            ?
-                                                //si el valor se encuentra en el array
-                                                (in_array($category->id, old('categories.*')) 
-                                                    ? 'checked' 
-                                                    : '')
-                                            : ''
+                                        if(old('categories.*'))
+                                            {
+                                            //si el valor se encuentra en el array
+                                            echo in_array($category->id, old('categories.*'))? 'checked' : '';
+                                             }else{
+                                                 //seleccionamos las categorías
+                                                foreach ($post->categories as $categoryPost) {
+                                                    echo $categoryPost->id == $category->id ? 'checked' : '';
+                                                }
+                                             }
                                     ?>
                                 >
                                 <?= $category->name ?>
                             </label>
-                        <?php endforeach; ?>
+                        <?php endforeach; 
+                        ?>
                     </div>
                     <p class="help is-danger"><?= session('errors')['categories.*'] ?? '' ?></p>
-                <?php endif; ?>
             </div>
         </div>
     </div>

@@ -56,6 +56,9 @@ $routes->group('admin',['namespace' => 'App\Controllers\Admin', 'filter' => 'aut
 	$routes->get('articulos', 'Post::index', ['as' => 'posts']);
 	$routes->get('articulo/crear', 'Post::create', ['as' => 'post_create']);
 	$routes->post('articulo/guardar', 'Post::store', ['as' => 'post_store']);
+	$routes->get('articulo/editar/(:any)', 'Post::edit/$1', ['as' => 'post_edit']);
+	$routes->post('articulo/actualizar', 'Post::update', ['as' => 'post_update']);
+	$routes->get('articulo/eliminar/(:any)', 'Post::delete/$1', ['as' => 'post_delete']);
 	
 	//Categorias
 	$routes->get('categorias', 'Category::index', ['as' => 'categories']);

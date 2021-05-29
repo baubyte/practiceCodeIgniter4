@@ -3,6 +3,8 @@
 namespace App\Entities;
 
 use CodeIgniter\Entity;
+//Librería pra hashear los ids
+use Hashids\Hashids;
 
 class Post extends Entity
 {
@@ -64,7 +66,9 @@ class Post extends Entity
 	public function getCategories()
 	{
 		$categorypostModel = model('CategorypostModel');
-		return $categorypostModel->where('post_id', $this->id)->join('categories', 'categories.id = categories_posts.category_id')->findAll() ?? [];
+		return $categorypostModel
+								->select('categories.id,categories.name')
+								->where('post_id', $this->id)->join('categories', 'categories.id = categories_posts.category_id')->findAll() ?? [];
 	}
 
 
@@ -84,5 +88,40 @@ class Post extends Entity
 	public function getRouteArticle()
 	{
 		return base_url(route_to('article',$this->slug));
+	}
+	/**
+	 * Genera la ruta que permite llamar al método de 
+	 * edición de controlador y ademas pasa el id de la 
+	 * entidad como parámetro
+	 *
+	 * @return url
+	 */
+	public function getRouteEdit()
+	{
+		return base_url(route_to('post_edit', $this->getEncodeId()));
+	}
+
+	/**
+	 * Genera la ruta que permite llamar al método de 
+	 * eliminación de controlador y ademas pasa el id de la 
+	 * entidad como parámetro
+	 *
+	 * @return url
+	 */
+	public function getRouteDelete()
+	{
+		return base_url(route_to('post_delete', $this->getEncodeId()));
+	}
+	/**
+	 * Realiza el Hash del id
+	 *
+	 * @return idEncode
+	 */
+	public function getEncodeId()
+	{
+		//Instaríamos el hashid
+		$hashId = new Hashids();
+		$idEncode = $hashId->encode($this->id);
+		return $idEncode;
 	}
 }
