@@ -80,5 +80,20 @@ class PostModel extends Model
 		//Encadenados
 		return $this;
 	}
+	/**
+	 * Devuelve los post pos su categoria
+	 *
+	 * @param string $category
+	 * @return Post
+	 */
+	public function getPostByCategory(string $category)
+	{
+		return $this
+					->select('posts.*')
+					->join('categories_posts', 'post.id = categories_posts.post_id')
+					->join('categories', 'categories.id = categories_posts.category_id')
+					->where('categories.name', $category);
+
+	}
 }
 
