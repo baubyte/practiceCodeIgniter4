@@ -55,5 +55,7 @@ Home
         <!-- Generamos los Links de Pagination -->
         <?= $pager->links() ?>
     </section>
+<section class="section">
+</section>
 </div>
 <?= $this->endSection() ?>
