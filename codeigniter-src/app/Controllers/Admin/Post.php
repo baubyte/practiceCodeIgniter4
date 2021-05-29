@@ -108,7 +108,8 @@ class Post extends BaseController
 	public function update()
 	{
 		$post = new PostEntity($this->request->getPost());
-		dd($post);
+		$post->slug = $this->request->getVar('title');
+		dd($post->hasChanged('slug'), $post);
 
 	}
 	/**
