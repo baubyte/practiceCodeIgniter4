@@ -105,6 +105,12 @@ class Post extends BaseController
 			return view('admin/post/post_edit', ['post' => $post, 'categories' => $categories]);
 		}
 	}
+	public function update()
+	{
+		$post = new PostEntity($this->request->getPost());
+		dd($post);
+
+	}
 	/**
 	 * Se encarga de decodificar el id que recibimos
 	 *

@@ -6,7 +6,7 @@ Editar Articulo - <?=$post->title?>
 <?= $this->endSection() ?>
 <!-- Seccion Contenido -->
 <?= $this->section('content') ?>
-<form action="<?= base_url(route_to('post_store')) ?>" method="post" enctype="multipart/form-data">
+<form action="<?= base_url(route_to('post_update')) ?>" method="post" enctype="multipart/form-data">
     <?= csrf_field() ?>
     <div class="columns">
         <div class="column is-four-fifths">
