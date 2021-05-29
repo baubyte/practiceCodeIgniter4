@@ -33,7 +33,7 @@ class Post extends Entity
 		//Asignamos el atributo
 		$this->attributes['slug'] = $slug;
 	}
-	
+
 	/**
 	 * Relaciones entre la entidad Post y Usuarios
 	 * para poder obtener el autor
@@ -42,15 +42,15 @@ class Post extends Entity
 	 */
 	protected function getAuthor()
 	{
-		 /**
-		  * Validamos si es que tiene un id de usuarios
-		  * caso contrario retornamos la entidad POST
-		  */
+		/**
+		 * Validamos si es que tiene un id de usuarios
+		 * caso contrario retornamos la entidad POST
+		 */
 		if (!empty($this->attributes['user_id'])) {
 			//Llamamos la modelo
 			$userInfoModel = model('UserInfoModel');
 			//Buscamos la información de ese usuario
-			$userInfo =$userInfoModel->where('user_id', $this->attributes['user_id'])->first();
+			$userInfo = $userInfoModel->where('user_id', $this->attributes['user_id'])->first();
 			return $userInfo;
 		}
 		return $this;
@@ -64,7 +64,7 @@ class Post extends Entity
 	public function getCategories()
 	{
 		$categorypostModel = model('CategorypostModel');
-		return $categorypostModel->where('post_id', $this->id)->join('categories','categories.id = categories_posts.category_id')->findAll() ?? [];
+		return $categorypostModel->where('post_id', $this->id)->join('categories', 'categories.id = categories_posts.category_id')->findAll() ?? [];
 	}
 
 
@@ -75,6 +75,14 @@ class Post extends Entity
 	 */
 	public function getLinkImage()
 	{
-		return base_url('uploads/images/'. $this->image);
+		return base_url('uploads/images/' . $this->image);
+	}
+	/**
+	 * Genera el enlace para el articulo
+	 * @return void
+	 */
+	public function getRouteArticle()
+	{
+		return base_url(route_to('article',$this->slug));
 	}
 }
