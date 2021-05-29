@@ -36,6 +36,7 @@ $routes->setAutoRoute(true);
 /**Grupo de Rutas Front*/
 $routes->group('/',['namespace' => 'App\Controllers\Front'],function($routes){
 	$routes->get('', 'Home::index', ['as' => 'home']);
+	$routes->get('articulo/(:segment)', 'Home::article/$1', ['as' => 'article']);
 });
 /**Grupo de Rutas Auth*/
 $routes->group('auth',['namespace' => 'App\Controllers\Auth'],function($routes){
