@@ -90,7 +90,7 @@ class PostModel extends Model
 	{
 		return $this
 					->select('posts.*')
-					->join('categories_posts', 'post.id = categories_posts.post_id')
+					->join('categories_posts', 'posts.id = categories_posts.post_id')
 					->join('categories', 'categories.id = categories_posts.category_id')
 					->where('categories.name', $category);
 
